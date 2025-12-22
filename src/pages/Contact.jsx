@@ -1,5 +1,22 @@
 import { useState } from 'react'
-import heroBg from '../assets/images/hero2.jpg'
+import heroBg from '../assets/images/hero4.jpg'
+
+/**
+ * CONTACT FORM BACKEND CONFIGURATION (Hostinger/SMTP)
+ * --------------------------------------------------
+ * The form sends data to: https://aedezirehomes.com/api/send-otp.php
+ * 
+ * Required parameters in the PHP backend for Hostinger SMTP:
+ * 
+ * 1. SMTP Host: smtp.hostinger.com
+ * 2. SMTP Port: 465 (SSL) or 587 (TLS)
+ * 3. SMTP User: Your business email (e.g., hello@aedezirehomes.com)
+ * 4. SMTP Pass: Your email password
+ * 5. Encryption: SSL/TLS
+ * 
+ * The API should handle the structured 'message' payload which includes:
+ * Full Name, Phone, Project Type, Budget, Timeline, and User Message.
+ */
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,6 +30,8 @@ export default function Contact() {
   })
 
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
 
   const projectTypes = [
     'Residential Interior Design',
@@ -24,11 +43,11 @@ export default function Contact() {
   ]
 
   const budgetRanges = [
-    '$5,000 - $15,000',
-    '$15,000 - $30,000',
-    '$30,000 - $50,000',
-    '$50,000 - $100,000',
-    '$100,000+'
+    '5,000 - 15,000',
+    '15,000 - 30,000',
+    '30,000 - 50,000',
+    '50,000 - 100,000',
+    '100,000+'
   ]
 
   const timelines = [
@@ -45,24 +64,61 @@ export default function Contact() {
       ...prev,
       [name]: value
     }))
+    // Clear error when user starts typing again
+    if (submitError) setSubmitError(null)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setIsSubmitted(true)
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        projectType: '',
-        budget: '',
-        timeline: '',
-        message: ''
+    setIsLoading(true)
+    setSubmitError(null)
+
+    // Construct the structured message as requested
+    const structuredMessage = `
+Full Name: ${formData.name}
+Phone: ${formData.phone}
+Project Type: ${formData.projectType || 'Not specified'}
+Budget: ${formData.budget || 'Not specified'}
+Timeline: ${formData.timeline || 'Not specified'}
+User Message: ${formData.message}
+    `.trim()
+
+    try {
+      const response = await fetch('https://aedezirehomes.com/api/send-otp.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          message: structuredMessage
+        }),
       })
-    }, 3000)
+
+      // Even if it's not a 200 OK, some PHP APIs might return success in a different way.
+      // However, usually response.ok is a good check.
+      if (response.ok) {
+        setIsSubmitted(true)
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          projectType: '',
+          budget: '',
+          timeline: '',
+          message: ''
+        })
+      } else {
+        const errorData = await response.json().catch(() => ({}))
+        setSubmitError(errorData.message || 'Failed to send message. Please try again later.')
+      }
+    } catch (error) {
+      console.error('Submission error:', error)
+      setSubmitError('An error occurred while sending your message. Please check your internet connection and try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const contactInfo = [
@@ -75,7 +131,7 @@ export default function Contact() {
     {
       icon: '📞',
       title: 'Call Us',
-      content: '+91 90003 38400, +91 733-7278425\nMon-Sat: 9AM-6PM PST',
+      content: '+91 879052483\nMon-Sat: 9AM-6PM PST',
       action: 'Call Now'
     },
     {
@@ -89,18 +145,19 @@ export default function Contact() {
   return (
     <div className="min-h-screen pt-20 sm:pt-24 md:pt-32">
       {/* Hero Section */}
-      <section
-      style={{height: '80vh'}}
-      >
+      <section style={{height: '80vh'}}>
         {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50/80 to-warm-100/80" />
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroBg} 
+            alt="Contact Us Hero" 
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/50 via-primary-800/30 to-transparent"></div>
+        </div>
 
-        {/* Decorative gradient blobs */}
-        <div className="absolute inset-0">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 z-5">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-gradient-to-br from-warm-400/20 to-accent-400/20 rounded-full blur-3xl"></div>
         </div>
@@ -111,12 +168,12 @@ export default function Contact() {
             <span className="text-xs sm:text-sm font-medium text-primary-700">Get In Touch</span>
           </div>
           
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-900 mb-4 sm:mb-6">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-4 sm:mb-6 drop-shadow-md">
             Let's Start Your
-            <span className="block text-gradient">Design Journey</span>
+            <span className="block text-brand-accent">Design Journey</span>
           </h1>
           
-          <p className="text-base sm:text-lg md:text-xl text-primary-700 max-w-2xl sm:max-w-3xl mx-auto font-light leading-relaxed px-2">
+          <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl sm:max-w-3xl mx-auto font-light leading-relaxed px-2 drop-shadow-sm">
             Ready to transform your space? We'd love to hear about your project and discuss how 
             we can bring your vision to life with our signature approach to luxury interior design.
           </p>
@@ -165,19 +222,33 @@ export default function Contact() {
           </div>
 
           {isSubmitted ? (
-            <div className="card-premium p-6 sm:p-8 md:p-12 text-center max-w-2xl mx-auto">
+            <div className="card-premium p-6 sm:p-8 md:p-12 text-center max-w-2xl mx-auto animate-fade-in">
               <div className="w-16 h-16 sm:w-20 md:w-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg">
                 <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-primary-900 mb-2 sm:mb-4">Thank You!</h3>
-              <p className="text-primary-600 text-sm sm:text-base md:text-lg leading-relaxed">
-                Your message has been sent successfully. We'll contact you within 24 hours to discuss your project.
+              <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-primary-900 mb-2 sm:mb-4">Message Sent!</h3>
+              <p className="text-primary-600 text-sm sm:text-base md:text-lg leading-relaxed mb-8">
+                Thank you for reaching out. Your design journey has begun! We've received your details and will get back to you within 24 hours.
               </p>
+              <button 
+                onClick={() => setIsSubmitted(false)}
+                className="px-6 py-2 bg-primary-100 text-primary-700 rounded-lg hover:bg-primary-200 transition-colors font-medium"
+              >
+                Send Another Message
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="card-premium p-4 sm:p-6 md:p-8 lg:p-12">
+              {submitError && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl flex items-center space-x-3">
+                  <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="text-sm">{submitError}</p>
+                </div>
+              )}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
                 <div>
                   <label className="block text-primary-900 font-medium mb-2 sm:mb-3 text-sm sm:text-base">Full Name *</label>
@@ -280,9 +351,22 @@ export default function Contact() {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-lg sm:rounded-xl bg-brand-primary text-white shadow-xl hover:shadow-2xl transition-premium hover:scale-105"
+                  disabled={isLoading}
+                  className={`px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-lg sm:rounded-xl bg-brand-primary text-white shadow-xl transition-premium flex items-center justify-center mx-auto min-w-[200px] ${
+                    isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-2xl hover:scale-105'
+                  }`}
                 >
-                  Send Message
+                  {isLoading ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
               </div>
             </form>
@@ -303,18 +387,16 @@ export default function Contact() {
           </div>
 
           <div className="aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl">
-            <div className="w-full h-full bg-gradient-to-br from-primary-100 to-warm-100 flex items-center justify-center">
-              <div className="text-center px-4">
-                <div className="w-16 h-16 sm:w-20 md:w-20 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg">
-                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <p className="text-primary-700 font-medium text-base sm:text-lg mb-1 sm:mb-2">Interactive Map</p>
-                <p className="text-primary-600 text-xs sm:text-sm">123 Design Avenue, Beverly Hills, CA</p>
-              </div>
-            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.801511802242!2d78.38554922880317!3d17.42131064581537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb96aa5eedc9d3%3A0xb039db2f64acaa89!2sC9CP%2BGH%2C%20LIG%20Chitrapuri%20Colony%2C%20Hyderabad%2C%20Rai%20Durg%2C%20Telangana%20500104!5e0!3m2!1sen!2sin!4v1766303736545!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Aedezire Homes Studio Location"
+            />
           </div>
         </div>
       </section>

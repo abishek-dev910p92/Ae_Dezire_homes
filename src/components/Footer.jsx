@@ -46,13 +46,13 @@ export default function Footer() {
   const contactInfo = [
     {
       icon: '📍',
-      title: 'Studio Location',
-      content: '123 Design Avenue\nBeverly Hills, CA 90210'
+      title: 'Location',
+      content: 'C9CP+GH, LIG Chitrapuri Colony, Radhe Nagar, Hyderabad, Rai Durg, Telangana 500104'
     },
     {
       icon: '📞',
       title: 'Phone',
-      content: '+91 90003 38400, +91 733-7278425\nMon-Sat: 9AM-6PM PST'
+      content: '+91 879052483\nMon-Sat: 9AM-6PM PST'
     },
     {
       icon: '✉️',
@@ -166,7 +166,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-primary-400 text-sm">
-            © 2024 AE Dezire Homes. All rights reserved.
+            © 2026 AE Dezire Homes. All rights reserved.
           </div>
           <div className="flex space-x-6 text-sm">
             <a href="#privacy" className="text-primary-400 hover:text-white transition-colors">Privacy Policy</a>
