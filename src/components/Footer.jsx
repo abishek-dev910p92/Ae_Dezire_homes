@@ -52,7 +52,7 @@ export default function Footer() {
     {
       icon: '📞',
       title: 'Phone',
-      content: '+91 879052483\nMon-Sat: 9AM-6PM PST'
+      content: '+91 879052483/ 7337278425\nMon-Sat: 9AM-6PM PST'
     },
     {
       icon: '✉️',

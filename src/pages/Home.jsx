@@ -207,8 +207,7 @@ export default function Home() {
                 <h3 className="font-display text-2xl font-semibold mb-2">Luxury Living Package</h3>
                 <p className="text-white/90 mb-4">Complete home transformation with premium materials</p>
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-3xl font-bold">15,999</span>
-                  <span className="text-white/70 line-through">22,999</span>
+                 
                   <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold">30% OFF</span>
                 </div>
               </div>
@@ -231,8 +230,7 @@ export default function Home() {
                 <h3 className="font-display text-2xl font-semibold mb-2">Kitchen Excellence</h3>
                 <p className="text-white/90 mb-4">Modern kitchen design with smart storage solutions</p>
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-3xl font-bold">8,999</span>
-                  <span className="text-white/70 line-through">12,999</span>
+                 
                   <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold">25% OFF</span>
                 </div>
               </div>
@@ -255,8 +253,7 @@ export default function Home() {
                 <h3 className="font-display text-2xl font-semibold mb-2">Bedroom Sanctuary</h3>
                 <p className="text-white/90 mb-4">Create your perfect sleep sanctuary with our bedroom package</p>
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-3xl font-bold">5,999</span>
-                  <span className="text-white/70 line-through">7,999</span>
+                  
                   <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold">20% OFF</span>
                 </div>
               </div>
