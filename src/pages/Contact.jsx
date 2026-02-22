@@ -125,13 +125,13 @@ User Message: ${formData.message}
     {
       icon: '📍',
       title: 'Visit Our Studio',
-      content: '123 Design Avenue\nBeverly Hills, CA 90210',
+      content: 'Chitrapuri Colony, Radhe Nagar,\n Hyderabad, Rai Durg, Telangana 500104',
       action: 'Get Directions'
     },
     {
       icon: '📞',
       title: 'Call Us',
-      content: '+91 879052483/ 7337278425\nMon-Sat: 9AM-6PM PST',
+      content: '+91 7337278425/879052483 \nMon-Sat: 9AM-6PM PST',
       action: 'Call Now'
     },
     {

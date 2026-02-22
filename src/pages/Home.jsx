@@ -93,7 +93,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeInUp" style={{animationDelay: '0.2s'}} >
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 animate-fadeInUp" style={{animationDelay: '0.2s'}} >
             {[
               {
                 title: "Residential Design",
@@ -101,12 +101,7 @@ export default function Home() {
                 icon: <FaHome />,
                 gradient: "from-brand-primary to-brand-secondary"
               },
-              {
-                title: "Commercial Spaces",
-                description: "Professional environments that inspire productivity and leave lasting impressions.",
-                icon: <FaBuilding/>,
-                gradient: "from-accent-500 to-accent-600"
-              },
+              
               {
                 title: "Luxury Styling",
                 description: "Curated selections of premium furnishings and art for sophisticated spaces.",
@@ -121,12 +116,12 @@ export default function Home() {
                 <h3 className="font-display text-2xl font-semibold text-primary-300 mb-4">{service.title}</h3>
                 <p className="text-primary-400 leading-relaxed">{service.description}</p>
                 <div className="mt-6">
-                  <span className="inline-flex items-center text-brand-primary font-medium group-hover:translate-x-2 transition-transform">
+                  <a href="#contact" className="inline-flex items-center text-brand-primary font-medium group-hover:translate-x-2 transition-transform">
                     Learn more
                     <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </span>
+                  </a>
                 </div>
               </div>
             ))}
@@ -208,7 +203,7 @@ export default function Home() {
                 <p className="text-white/90 mb-4">Complete home transformation with premium materials</p>
                 <div className="flex items-center space-x-2 mb-4">
                  
-                  <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold">30% OFF</span>
+                  <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold">20% OFF</span>
                 </div>
               </div>
               <a href="#contact" className="w-full bg-white/20 backdrop-blur-sm hover:bg-white/30 py-3 rounded-xl font-semibold transition-all duration-300 block text-center">
@@ -231,7 +226,7 @@ export default function Home() {
                 <p className="text-white/90 mb-4">Modern kitchen design with smart storage solutions</p>
                 <div className="flex items-center space-x-2 mb-4">
                  
-                  <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold">25% OFF</span>
+                  <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold">20% OFF</span>
                 </div>
               </div>
               <a href="#contact" className="w-full bg-white/20 backdrop-blur-sm hover:bg-white/30 py-3 rounded-xl font-semibold transition-all duration-300 block text-center">
@@ -253,7 +248,7 @@ export default function Home() {
                 <h3 className="font-display text-2xl font-semibold mb-2">Bedroom Sanctuary</h3>
                 <p className="text-white/90 mb-4">Create your perfect sleep sanctuary with our bedroom package</p>
                 <div className="flex items-center space-x-2 mb-4">
-                  
+
                   <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold">20% OFF</span>
                 </div>
               </div>
@@ -652,7 +647,7 @@ export default function Home() {
                   JC
                 </div>
                 <div className="ml-3 sm:ml-4">
-                  <h4 className="font-semibold text-primary-900 text-sm sm:text-base">James Chen</h4>
+                  <h4 className="font-semibold text-primary-900 text-sm sm:text-base">Harish Kumar</h4>
                   <p className="text-xs sm:text-sm text-primary-600">CEO, Tech Startup</p>
                 </div>
               </div>
@@ -673,7 +668,7 @@ export default function Home() {
                   ER
                 </div>
                 <div className="ml-3 sm:ml-4">
-                  <h4 className="font-semibold text-primary-900 text-sm sm:text-base">Emma Rodriguez</h4>
+                  <h4 className="font-semibold text-primary-900 text-sm sm:text-base">M Sameer</h4>
                   <p className="text-xs sm:text-sm text-primary-600">Restaurant Owner</p>
                 </div>
               </div>

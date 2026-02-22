@@ -1,7 +1,7 @@
 export default function Footer() {
   const services = [
     'Residential Interior Design',
-    'Commercial Space Design',
+ 
     'Kitchen & Bath Remodel',
     'Furniture & Decor Selection',
     'Color Consultation',
@@ -52,7 +52,7 @@ export default function Footer() {
     {
       icon: '📞',
       title: 'Phone',
-      content: '+91 879052483/ 7337278425\nMon-Sat: 9AM-6PM PST'
+      content: '+91 7337278425/ 879052483\nMon-Sat: 9AM-6PM PST'
     },
     {
       icon: '✉️',
@@ -151,7 +151,7 @@ export default function Footer() {
         <div className="text-center mb-12">
           <h4 className="font-display text-lg font-semibold mb-6">Awards & Recognition</h4>
           <div className="flex flex-wrap justify-center gap-8">
-            {['🏆 Best Interior Design Studio 2026', '🎨 Design Excellence Award', '⭐ Luxury Living Awards'].map((award, index) => (
+            {['🏆 Best Interior Design Studio 2007', '🎨 Design Excellence Award', '⭐ Luxury Living Awards'].map((award, index) => (
               <div key={index} className="flex items-center space-x-2 text-primary-300">
                 <span className="text-lg">{award.split(' ')[0]}</span>
                 <span className="text-sm">{award.split(' ').slice(1).join(' ')}</span>

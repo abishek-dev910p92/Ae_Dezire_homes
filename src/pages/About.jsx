@@ -50,22 +50,22 @@ export default function About() {
 
   const achievements = [
     {
-      number: "150+",
+      number: "4,500+",
       label: "Projects Completed",
-      description: "Residential and commercial spaces transformed"
+      description: "Residential transformed"
     },
     {
-      number: "15+",
+      number: "18+",
       label: "Years of Experience",
       description: "Creating exceptional interiors since 2009"
     },
     {
-      number: "12",
+      number: "2",
       label: "Design Awards",
       description: "Recognized for excellence and innovation"
     },
     {
-      number: "98%",
+      number: "92%",
       label: "Client Satisfaction",
       description: "Our clients recommend us to others"
     }
