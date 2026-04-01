@@ -13,24 +13,10 @@ export default function Services() {
         "Color palette curation",
         "Art & accessory selection"
       ],
-      price: "Starting from  25,000",
-      duration: "3-6 months"
+      price: "Starting from  5,99,000",
+      duration: "2-4 months"
     },
-    {
-      title: "Commercial Spaces",
-      description: "Create inspiring professional environments that enhance productivity, reflect your brand identity, and leave lasting impressions on clients.",
-      icon: "🏢",
-      gradient: "from-accent-500 to-accent-600",
-      features: [
-        "Office space planning",
-        "Retail environment design",
-        "Hospitality interiors",
-        "Brand integration",
-        "Functional workflow design"
-      ],
-      price: "Starting from  50,000",
-      duration: "6-12 months"
-    },
+    
     {
       title: "Luxury Styling & Curation",
       description: "Elevate your space with carefully selected premium furnishings, art pieces, and accessories that add sophistication and personality.",
@@ -43,7 +29,7 @@ export default function Services() {
         "Accessory styling",
         "Seasonal refresh services"
       ],
-      price: "Starting from  15,000",
+      price: "Starting from  9,99,000",
       duration: "2-4 months"
     },
     {
@@ -58,8 +44,8 @@ export default function Services() {
         "Material selection",
         "Project management"
       ],
-      price: "Starting from  75,000",
-      duration: "8-18 months"
+      price: "Starting from  7,99,000",
+      duration: "4-6 months"
     },
     {
       title: "Sustainable Design",
@@ -73,24 +59,10 @@ export default function Services() {
         "Sustainable sourcing",
         "Green certification support"
       ],
-      price: "Starting from  30,000",
-      duration: "4-8 months"
+      price: "Starting from  15,99,000",
+      duration: "4-6 months"
     },
-    {
-      title: "Virtual Design Consultation",
-      description: "Professional design guidance delivered remotely, perfect for clients worldwide or those seeking expert advice on specific projects.",
-      icon: "💻",
-      gradient: "from-blue-500 to-blue-600",
-      features: [
-        "Video consultations",
-        "Digital mood boards",
-        "Shopping lists",
-        "Layout recommendations",
-        "3D visualizations"
-      ],
-      price: "Starting from  2,500",
-      duration: "2-6 weeks"
-    }
+   
   ]
 
   return (

@@ -50,22 +50,22 @@ export default function About() {
 
   const achievements = [
     {
-      number: "150+",
+      number: "4,500+",
       label: "Projects Completed",
-      description: "Residential and commercial spaces transformed"
+      description: "Residential transformed"
     },
     {
-      number: "15+",
+      number: "18+",
       label: "Years of Experience",
       description: "Creating exceptional interiors since 2009"
     },
     {
-      number: "12",
+      number: "2",
       label: "Design Awards",
       description: "Recognized for excellence and innovation"
     },
     {
-      number: "98%",
+      number: "92%",
       label: "Client Satisfaction",
       description: "Our clients recommend us to others"
     }
@@ -133,11 +133,13 @@ commercial establishments.
 
               </p>
               <p className="text-primary-700 leading-relaxed mb-4 sm:mb-8 text-sm sm:text-base">
-                <b>Kiranmayee Alivelu</b>, with a strong background in real
-estate and project management, brings strategic insight
-and a structured approach to each project. Her experience
-ensures that every design not only looks beautiful but is
-delivered with precision, efficiency, and value.
+                <b>Kiranmayee Alivelu</b>,Kiranmayee Alivelu is an interior design professional and creative entrepreneur from Telangana, known for transforming spaces into functional, elegant, and meaningful environments.
+
+With a strong eye for detail and a deep understanding of client needs. <p className='text-primary-700 leading-relaxed mb-4 sm:mb-8 text-sm sm:text-base'>she specializes in residential and commercial interiors, creating spaces that reflect personality, purpose, and comfort. Her approach blends aesthetic design, practical planning, and thoughtful execution, ensuring every project delivers both beauty and usability.
+
+Beyond interiors</p> <b>Kiranmayee is also recognized as the Runner-Up of Mrs. India 2022–2023, a platform that strengthened her leadership, confidence, and commitment to excellence.</b> She actively supports women’s empowerment initiatives and promotes early cancer detection awareness, reflecting her belief that strong spaces and strong people go hand in hand.
+
+Driven by creativity, integrity, and impact, Kiranmayee continues to build spaces—and stories—that inspire better living.
 <br></br>
 <br></br>
 <b>Lagadapati suneetha kumari</b>, driven by a keen eye for
